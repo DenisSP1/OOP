@@ -28,7 +28,7 @@ class Student:
         grade_for_lecturer = sum(all_grades) / len(all_grades)
         return round(grade_for_lecturer, 1)
     
-    def compare_st(self, other_student):
+    def __lt__(self, other_student):
         if isinstance(other_student, Student):
             b = self.average_grade() < other_student.average_grade()
             return b
@@ -55,7 +55,7 @@ class Lecturer(Mentor):
         self.grades = {}
         self.courses_in_progress = []
 
-    def compare(self, other_lecturer):
+    def __lt__(self, other_lecturer):
         if isinstance(other_lecturer, Lecturer):
             a = self.average_grade() < other_lecturer.average_grade()
             return a
